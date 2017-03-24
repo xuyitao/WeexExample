@@ -11,6 +11,10 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack --watch",
+    "copy:android": "cp dist/app.weex.js android/app/src/main/assets/app.js",
+    "copy:ios": "cp dist/app.weex.js ios/assets/app.js",
+    "android": "webpack && cp dist/app.weex.js android/app/src/main/assets/app.js",
+    "ci":"cd ./android && gradle assemble",
     "serve": "node build/init.js && serve -p 8080",
     "debug": "weex-devtool"
   },
