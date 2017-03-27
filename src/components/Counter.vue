@@ -10,10 +10,11 @@
 
 <script>
 export default {
-    data: {
-        count : 0,
+    data: function () {
+        return {
+            count : 0,
+        }
     },
-
     computed: {
         evenOrOdd : function () {
             return this.count % 2 === 0 ? 'even':'odd';
@@ -21,6 +22,7 @@ export default {
     },
     methods: {
         increment (state) {
+
             this.count++
         },
         decrement (state) {
