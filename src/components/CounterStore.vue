@@ -1,6 +1,6 @@
 <template>
   <div>
-    <text class="title">Clicked: {{ getCount }} times, count is {{ evenOrOdd }}.</text>
+    <text class="title">Clicked: {{ getCount | double}} times, count is {{ evenOrOdd }}.</text>
     <button @click="increment">+</button>
     <button @click="decrement">-</button>
     <button @click="incrementIfOdd">Increment if odd</button>
