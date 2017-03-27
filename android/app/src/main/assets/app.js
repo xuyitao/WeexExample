@@ -1264,7 +1264,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// Vue.use(Vuex)
+	_vue2.default.use(_vuex2.default);
 
 	var debug = process.env.NODE_ENV !== 'production';
 
