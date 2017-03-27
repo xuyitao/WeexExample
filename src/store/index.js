@@ -5,7 +5,7 @@ import * as getters from './getters'
 import * as mutations from './mutations'
 import counter from './modules/counter'
 
-// Vue.use(Vuex)
+Vue.use(Vuex)
 
 const debug = process.env.NODE_ENV !== 'production'
 
