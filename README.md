@@ -3,3 +3,4 @@
 
 #步骤
 一、[ Weex环境构建（一）Weex+Android开发环境 ](http://blog.csdn.net/oqqmihu123/article/details/65631808)
+二、[Weex环境构建（二）Vuex ](http://blog.csdn.net/oqqmihu123/article/details/66971425)
