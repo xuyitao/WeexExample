@@ -1,0 +1,6 @@
+export const Counter_Increment = 'Counter_Increment'
+export const Counter_Decrement = 'Counter_Decrement'
+export const Counter_Increment_IFODD = 'Counter_Increment_IFODD'
+export const Counter_Increment_ASYNC = 'Counter_Increment_ASYNC'
+export const Counter_evenOrOdd = 'Counter_evenOrOdd'
+export const Counter_GetCount = 'Counter_GetCount'
