@@ -2,6 +2,7 @@ package com.kunion.weex.adapter;
 
 import android.widget.ImageView;
 
+import com.kunion.weex.R;
 import com.squareup.picasso.Picasso;
 import com.taobao.weex.adapter.IWXImgLoaderAdapter;
 import com.taobao.weex.common.WXImageStrategy;
@@ -15,6 +16,6 @@ public class ImageAdapter implements IWXImgLoaderAdapter {
 
     @Override
     public void setImage(String url, ImageView view, WXImageQuality quality, WXImageStrategy strategy) {
-        Picasso.with(view.getContext()).load(url).into(view);
+        Picasso.with(view.getContext()).load("http://alibaba.github.io/weex/img/weex_logo_blue@3x.png").placeholder(R.mipmap.ic_launcher).into(view);
     }
 }

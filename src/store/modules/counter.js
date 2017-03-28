@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import * as types from '../mutation-types'
+import * as api from '../../api'
 
 const state = {
   count: 0
@@ -32,10 +33,14 @@ const actions = {
     },
     incrementAsync ({ commit }) {
       return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          commit(types.Counter_Increment)
-          resolve()
-        }, 1000)
+        // setTimeout(() => {
+        //   commit(types.Counter_Increment)
+        //   resolve()
+        // }, 1000)
+        api.incrementAsync().then(function () {
+            console.log('incrementAsync='+incrementAsync);
+            commit(types.Counter_Increment)
+        })
       })
     }
 }

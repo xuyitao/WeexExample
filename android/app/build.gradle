@@ -31,6 +31,5 @@ dependencies {
     compile 'com.taobao.android:weex_sdk:0.9.5@aar'
     compile 'com.squareup.picasso:picasso:2.5.2'
 
-
     testCompile 'junit:junit:4.12'
 }
