@@ -1,21 +1,69 @@
 <template>
   <div @androidback="back">
-    <ul>
-        <li><router-link to="/">/</router-link></li>
-        <li><router-link to="/counter">/counter</router-link></li>
-        <li><router-link to="/counters">/counters</router-link></li>
-        <li><router-link to="/hello">/hello</router-link></li>
-    </ul>
     <router-view style="flex:1"></router-view>
   </div>
 </template>
 
 <script>
-  export default {
+
+var modal = weex.requireModule('modal')
+
+export default {
     methods: {
-      back: function () {
-        this.$router.back()
-      }
+        back: function () {
+            this.$router.back()
+        },
+        xjump:function(to) {
+            if (this.$router) {
+              this.$router.push(to)
+            }
+        }
     }
-  }
+}
 </script>
+
+<style scoped>
+  .header {
+    position: relative;
+    height: 120px;
+    margin-bottom: 3px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: #DDDDDD;
+    background-color: #FF6600;
+  }
+  .logo {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    top: 35px;
+    left: 35px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #FFFFFF;
+  }
+  .image {
+    width: 44px;
+    height: 44px;
+  }
+  .nav {
+    display: flex;
+    position: absolute;
+    left: 120px;
+    top: 35px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .link {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .title {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 32px;
+    line-height: 44px;
+    color: #000000;
+  }
+</style>

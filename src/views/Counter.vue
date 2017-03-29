@@ -4,7 +4,8 @@
     <button @click="increment">+</button>
     <button @click="decrement">-</button>
     <button @click="incrementIfOdd">Increment if odd</button>
-    <button @click="incrementAsync">Increment async</button>
+    <!-- <button @click="incrementAsync">Increment async</button> -->
+    <button @click="jump('/hello')">Increment async</button>
   </div>
 </template>
 

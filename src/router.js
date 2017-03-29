@@ -1,8 +1,8 @@
 // import Vue from 'vue'
 import Router from 'vue-router'
-import CounterView from './components/Counter.vue'
-import CounterSView from './components/CounterStore.vue'
-import Hello from './components/Hello.vue'
+import CounterView from './views/Counter.vue'
+import CounterSView from './views/CounterStore.vue'
+import Hello from './views/Hello.vue'
 
 Vue.use(Router)
 
