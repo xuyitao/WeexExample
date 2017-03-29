@@ -12,11 +12,6 @@ export default {
     methods: {
         back: function () {
             this.$router.back()
-        },
-        xjump:function(to) {
-            if (this.$router) {
-              this.$router.push(to)
-            }
         }
     }
 }
