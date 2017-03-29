@@ -3,5 +3,9 @@
 
 #步骤
 一、[ Weex环境构建（一）Weex+Android开发环境 ](http://blog.csdn.net/oqqmihu123/article/details/65631808)
+
 二、[ Weex环境构建（二）Vuex ](http://blog.csdn.net/oqqmihu123/article/details/66971425)
+
 三、[ Weex环境构建（三）过滤器filter ](http://blog.csdn.net/oqqmihu123/article/details/66972032)
+
+四、[ Weex环境构建（四）vue-router ](http://blog.csdn.net/oqqMiHu123/article/details/68061302)
