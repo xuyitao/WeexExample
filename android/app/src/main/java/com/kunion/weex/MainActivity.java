@@ -2,10 +2,13 @@ package com.kunion.weex;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.taobao.weex.IWXRenderListener;
+import com.taobao.weex.WXSDKEngine;
 import com.taobao.weex.WXSDKInstance;
+import com.taobao.weex.appfram.navigator.IActivityNavBarSetter;
 import com.taobao.weex.common.WXRenderStrategy;
 import com.taobao.weex.utils.WXFileUtils;
 
@@ -28,8 +31,59 @@ public class MainActivity extends AppCompatActivity implements IWXRenderListener
          * width 为-1 默认全屏，可以自己定制。
          * height =-1 默认全屏，可以自己定制。
          */
-        mWXSDKInstance.render("WXSample", WXFileUtils.loadAsset("app.js", this), null, null, WXRenderStrategy.APPEND_ASYNC);
+        mWXSDKInstance.render("WXSample", WXFileUtils.loadAsset("entry.js", this), null, null, WXRenderStrategy.APPEND_ASYNC);
+        WXSDKEngine.setActivityNavBarSetter(new NavigatorAdapter());
 
+    }
+
+    class NavigatorAdapter implements IActivityNavBarSetter {
+        @Override
+        public boolean push(String param) {
+            Log.d("weexLog","push   "+param);
+
+            return false;
+        }
+
+        @Override
+        public boolean pop(String param) {
+            Log.d("weexLog","pop   "+param);
+            return false;
+        }
+
+        @Override
+        public boolean setNavBarRightItem(String param) {
+            return false;
+        }
+
+        @Override
+        public boolean clearNavBarRightItem(String param) {
+            return false;
+        }
+
+        @Override
+        public boolean setNavBarLeftItem(String param) {
+            return false;
+        }
+
+        @Override
+        public boolean clearNavBarLeftItem(String param) {
+            return false;
+        }
+
+        @Override
+        public boolean setNavBarMoreItem(String param) {
+            return false;
+        }
+
+        @Override
+        public boolean clearNavBarMoreItem(String param) {
+            return false;
+        }
+
+        @Override
+        public boolean setNavBarTitle(String param) {
+            return false;
+        }
     }
 
     @Override

@@ -42,31 +42,33 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	var App = __webpack_require__(1)
+	var App = __webpack_require__(34)
 	App.el = '#root'
 	new Vue(App)
 
 
 /***/ },
-/* 1 */
+
+/***/ 34:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(2)
+	__vue_styles__.push(__webpack_require__(35)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(3)
+	__vue_exports__ = __webpack_require__(36)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(4)
+	var __vue_template__ = __webpack_require__(37)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -78,10 +80,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "D:\\MM\\weex\\WeexExample\\src\\App.vue"
+	__vue_options__.__file = "D:\\MM\\weex\\WeexExample\\src\\views\\Hello.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-97600482"
+	__vue_options__._scopeId = "data-v-3b506e02"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -96,63 +98,43 @@
 
 
 /***/ },
-/* 2 */
+
+/***/ 35:
 /***/ function(module, exports) {
 
 	module.exports = {
-	  "header": {
-	    "position": "relative",
-	    "height": 120,
-	    "marginBottom": 3,
-	    "borderBottomWidth": 2,
-	    "borderBottomStyle": "solid",
-	    "borderBottomColor": "#DDDDDD",
-	    "backgroundColor": "#FF6600"
-	  },
-	  "logo": {
-	    "position": "relative",
-	    "width": 50,
-	    "height": 50,
-	    "top": 35,
-	    "left": 35,
-	    "borderWidth": 3,
-	    "borderStyle": "solid",
-	    "borderColor": "#FFFFFF"
-	  },
-	  "image": {
-	    "width": 44,
-	    "height": 44
-	  },
-	  "nav": {
-	    "display": "flex",
-	    "position": "absolute",
-	    "left": 120,
-	    "top": 35,
-	    "flexDirection": "row",
-	    "flexWrap": "nowrap",
-	    "justifyContent": "flex-start",
-	    "alignItems": "center"
-	  },
-	  "link": {
-	    "paddingLeft": 15,
-	    "paddingRight": 15
+	  "wrapper": {
+	    "alignItems": "flex-start",
+	    "marginTop": 120,
+	    "justifyContent": "center"
 	  },
 	  "title": {
-	    "fontFamily": "Verdana, Geneva, sans-serif",
-	    "fontSize": 32,
-	    "lineHeight": 44,
-	    "color": "#000000"
+	    "fontSize": 48
+	  },
+	  "logo": {
+	    "width": 360,
+	    "height": 82
+	  },
+	  "touchMe": {
+	    "width": 300,
+	    "height": 60,
+	    "borderLeftStyle": "solid",
+	    "borderWidth": 5,
+	    "borderColor": "#000000",
+	    "borderLeftColor": "#FFFFFF",
+	    "borderRightColor": "#888888"
 	  }
 	}
 
 /***/ },
-/* 3 */
+
+/***/ 36:
 /***/ function(module, exports) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	//
 	//
@@ -160,34 +142,51 @@
 	//
 	//
 	//
+	//
 
 
-	var modal = weex.requireModule('modal');
-
+	var navigator = weex.requireModule('./navigator');
 	exports.default = {
-	    methods: {
-	        back: function back() {
-	            this.$router.back();
-	        }
+	  data: function data() {
+	    return {
+	      logoUrl: 'https://alibaba.github.io/weex/img/weex_logo_blue@3x.png',
+	      target: 'World'
+	    };
+	  },
+	  methods: {
+	    update: function update(e) {
+	      this.target = 'Weex 111';
+	    },
+	    redirect: function redirect() {
+	      // event.openURL('./weex.html?page=./dist/web/views/Counter.js')
 	    }
+	  }
 	};
 
 /***/ },
-/* 4 */
+
+/***/ 37:
 /***/ function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
 	  return _c('div', {
+	    staticClass: ["wrapper"],
 	    on: {
-	      "androidback": _vm.back
+	      "click": function($event) {
+	        _vm.redirect('/counter')
+	      }
 	    }
-	  }, [_c('router-view', {
-	    staticStyle: {
-	      flex: "1"
+	  }, [_c('image', {
+	    staticClass: ["logo"],
+	    attrs: {
+	      "src": _vm.logoUrl
 	    }
-	  })], 1)
+	  }), _c('text', {
+	    staticClass: ["title"]
+	  }, [_vm._v("Hello " + _vm._s(_vm.target))])])
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 
 /***/ }
-/******/ ]);
+
+/******/ });

@@ -1,11 +1,13 @@
 <template>
-  <div class="wrapper" @click="jump('/counter')">
+  <div class="wrapper" @click="redirect('/counter')">
     <image :src="logoUrl" class="logo"></image>
     <text class="title">Hello {{target}}</text>
   </div>
 </template>
 
 <script>
+
+let navigator = weex.requireModule('./navigator')
   export default {
     data: function () {
         return {
@@ -17,10 +19,8 @@
         update: function (e) {
             this.target = 'Weex 111'
         },
-        jump:function (to) {
-            if (this.$router) {
-              this.$router.push(to)
-            }
+        redirect: function() {
+          // event.openURL('./weex.html?page=./dist/web/views/Counter.js')
         }
     }
   }

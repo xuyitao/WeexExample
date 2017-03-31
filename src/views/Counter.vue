@@ -10,6 +10,10 @@
 </template>
 
 <script>
+
+var navigator = weex.requireModule('navigator')
+var modal = weex.requireModule('modal')
+
 export default {
     data: function () {
         return {
@@ -40,6 +44,13 @@ export default {
               this.increment();
               resolve()
             }, 1000)
+          })
+        },
+        jump (state) {
+          navigator.pop({
+            animated: "true"
+          }, event => {
+            modal.toast({ message: 'callback: ' + event, duration: 0.3})
           })
         }
     }

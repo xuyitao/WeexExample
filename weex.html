@@ -16,6 +16,29 @@
 </head>
 <body>
   <div id="root"></div>
-  <script src="./dist/app.web.js"></script>
+  <!-- <script src="./dist/index.web.js"></script> -->
+  <script>
+  (function () {
+    function getUrlParam (key) {
+      var reg = new RegExp('[?|&]' + key + '=([^&]+)')
+      var match = location.search.match(reg)
+      return match && match[1]
+    }
+
+    var page = getUrlParam('page')
+    var defaultPage = './dist/web/entry.js'
+    if (!page) {
+      var url = location.href.replace(/\?|$/, function(f) {
+        var query = '?page=' + defaultPage
+        return f ? query + '&' : query
+      })
+      return location.href = url
+    }
+    console.log('script');
+    var bundle = document.createElement('script')
+    bundle.src = page
+    document.body.appendChild(bundle)
+  })();
+  </script>
 </body>
 </html>

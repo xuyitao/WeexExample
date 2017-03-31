@@ -42,31 +42,29 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	var App = __webpack_require__(1)
+	var App = __webpack_require__(28)
 	App.el = '#root'
 	new Vue(App)
 
 
 /***/ },
-/* 1 */
+
+/***/ 28:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = []
 
-	/* styles */
-	__vue_styles__.push(__webpack_require__(2)
-	)
-
 	/* script */
-	__vue_exports__ = __webpack_require__(3)
+	__vue_exports__ = __webpack_require__(29)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(4)
+	var __vue_template__ = __webpack_require__(30)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -78,10 +76,9 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "D:\\MM\\weex\\WeexExample\\src\\App.vue"
+	__vue_options__.__file = "D:\\MM\\weex\\WeexExample\\src\\views\\Counter.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-97600482"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -96,63 +93,14 @@
 
 
 /***/ },
-/* 2 */
-/***/ function(module, exports) {
 
-	module.exports = {
-	  "header": {
-	    "position": "relative",
-	    "height": 120,
-	    "marginBottom": 3,
-	    "borderBottomWidth": 2,
-	    "borderBottomStyle": "solid",
-	    "borderBottomColor": "#DDDDDD",
-	    "backgroundColor": "#FF6600"
-	  },
-	  "logo": {
-	    "position": "relative",
-	    "width": 50,
-	    "height": 50,
-	    "top": 35,
-	    "left": 35,
-	    "borderWidth": 3,
-	    "borderStyle": "solid",
-	    "borderColor": "#FFFFFF"
-	  },
-	  "image": {
-	    "width": 44,
-	    "height": 44
-	  },
-	  "nav": {
-	    "display": "flex",
-	    "position": "absolute",
-	    "left": 120,
-	    "top": 35,
-	    "flexDirection": "row",
-	    "flexWrap": "nowrap",
-	    "justifyContent": "flex-start",
-	    "alignItems": "center"
-	  },
-	  "link": {
-	    "paddingLeft": 15,
-	    "paddingRight": 15
-	  },
-	  "title": {
-	    "fontFamily": "Verdana, Geneva, sans-serif",
-	    "fontSize": 32,
-	    "lineHeight": 44,
-	    "color": "#000000"
-	  }
-	}
-
-/***/ },
-/* 3 */
+/***/ 29:
 /***/ function(module, exports) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	//
 	//
@@ -160,34 +108,95 @@
 	//
 	//
 	//
+	//
+	//
+	//
+	//
+	//
 
 
+	var navigator = weex.requireModule('navigator');
 	var modal = weex.requireModule('modal');
 
 	exports.default = {
-	    methods: {
-	        back: function back() {
-	            this.$router.back();
-	        }
+	  data: function data() {
+	    return {
+	      count: 0
+	    };
+	  },
+	  computed: {
+	    evenOrOdd: function evenOrOdd() {
+	      return this.count % 2 === 0 ? 'even' : 'odd';
 	    }
+	  },
+	  methods: {
+	    increment: function increment(state) {
+
+	      this.count++;
+	    },
+	    decrement: function decrement(state) {
+	      this.count--;
+	    },
+	    incrementIfOdd: function incrementIfOdd(_ref) {
+	      var commit = _ref.commit,
+	          state = _ref.state;
+
+	      if ((this.count + 1) % 2 === 0) {
+	        this.increment();
+	      }
+	    },
+	    incrementAsync: function incrementAsync(_ref2) {
+	      var _this = this;
+
+	      var commit = _ref2.commit;
+
+	      return new Promise(function (resolve, reject) {
+	        setTimeout(function () {
+	          _this.increment();
+	          resolve();
+	        }, 1000);
+	      });
+	    },
+	    jump: function jump(state) {
+	      navigator.pop({
+	        animated: "true"
+	      }, function (event) {
+	        modal.toast({ message: 'callback: ' + event, duration: 0.3 });
+	      });
+	    }
+	  }
 	};
 
 /***/ },
-/* 4 */
+
+/***/ 30:
 /***/ function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', {
+	  return _c('div', [_c('text', {
+	    staticClass: ["title"]
+	  }, [_vm._v("Clicked: " + _vm._s(_vm.count) + " times, count is " + _vm._s(_vm.evenOrOdd) + ".")]), _c('button', {
 	    on: {
-	      "androidback": _vm.back
+	      "click": _vm.increment
 	    }
-	  }, [_c('router-view', {
-	    staticStyle: {
-	      flex: "1"
+	  }, [_vm._v("+")]), _c('button', {
+	    on: {
+	      "click": _vm.decrement
 	    }
-	  })], 1)
+	  }, [_vm._v("-")]), _c('button', {
+	    on: {
+	      "click": _vm.incrementIfOdd
+	    }
+	  }, [_vm._v("Increment if odd")]), _c('button', {
+	    on: {
+	      "click": function($event) {
+	        _vm.jump('/hello')
+	      }
+	    }
+	  }, [_vm._v("Increment async")])], 1)
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 
 /***/ }
-/******/ ]);
+
+/******/ });

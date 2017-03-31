@@ -46,27 +46,33 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var App = __webpack_require__(1)
+	var App = __webpack_require__(7)
 	App.el = '#root'
 	new Vue(App)
 
 
 /***/ },
-/* 1 */
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(2)
+	__vue_styles__.push(__webpack_require__(8)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(3)
+	__vue_exports__ = __webpack_require__(9)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(4)
+	var __vue_template__ = __webpack_require__(10)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -78,10 +84,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "D:\\MM\\weex\\WeexExample\\src\\App.vue"
+	__vue_options__.__file = "D:\\MM\\weex\\WeexExample\\src\\components\\list-item.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-97600482"
+	__vue_options__._scopeId = "data-v-6755794e"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -96,64 +102,33 @@
 
 
 /***/ },
-/* 2 */
+/* 8 */
 /***/ function(module, exports) {
 
 	module.exports = {
-	  "header": {
-	    "position": "relative",
-	    "height": 120,
-	    "marginBottom": 3,
-	    "borderBottomWidth": 2,
-	    "borderBottomStyle": "solid",
-	    "borderBottomColor": "#DDDDDD",
-	    "backgroundColor": "#FF6600"
-	  },
-	  "logo": {
-	    "position": "relative",
-	    "width": 50,
-	    "height": 50,
-	    "top": 35,
-	    "left": 35,
-	    "borderWidth": 3,
-	    "borderStyle": "solid",
-	    "borderColor": "#FFFFFF"
-	  },
-	  "image": {
-	    "width": 44,
-	    "height": 44
-	  },
-	  "nav": {
-	    "display": "flex",
-	    "position": "absolute",
-	    "left": 120,
-	    "top": 35,
-	    "flexDirection": "row",
-	    "flexWrap": "nowrap",
-	    "justifyContent": "flex-start",
-	    "alignItems": "center"
-	  },
-	  "link": {
-	    "paddingLeft": 15,
-	    "paddingRight": 15
-	  },
-	  "title": {
-	    "fontFamily": "Verdana, Geneva, sans-serif",
-	    "fontSize": 32,
-	    "lineHeight": 44,
-	    "color": "#000000"
+	  "item": {
+	    "paddingTop": 25,
+	    "paddingBottom": 25,
+	    "paddingLeft": 35,
+	    "paddingRight": 35,
+	    "height": 160,
+	    "justifyContent": "center",
+	    "borderBottomWidth": 1,
+	    "borderColor": "#dddddd"
 	  }
 	}
 
 /***/ },
-/* 3 */
+/* 9 */
 /***/ function(module, exports) {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	//
+	//
+	//
+	//
+	//
 	//
 	//
 	//
@@ -161,31 +136,42 @@
 	//
 	//
 
-
-	var modal = weex.requireModule('modal');
-
-	exports.default = {
-	    methods: {
-	        back: function back() {
-	            this.$router.back();
-	        }
+	module.exports = {
+	  props: {
+	    bgColor: { default: '#ffffff' }
+	  },
+	  methods: {
+	    click: function click() {
+	      this.$emit('click');
+	    },
+	    touchstart: function touchstart() {
+	      // FIXME android touch
+	      // TODO adaptive opposite bgColor
+	      // this.bgColor = '#e6e6e6';
+	    },
+	    touchend: function touchend() {
+	      // FIXME android touchend not triggered
+	      // this.bgColor = '#ffffff';
 	    }
+	  }
 	};
 
 /***/ },
-/* 4 */
+/* 10 */
 /***/ function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
 	  return _c('div', {
+	    staticClass: ["item"],
+	    style: {
+	      backgroundColor: _vm.bgColor
+	    },
 	    on: {
-	      "androidback": _vm.back
+	      "click": _vm.click,
+	      "touchstart": _vm.touchstart,
+	      "touchend": _vm.touchend
 	    }
-	  }, [_c('router-view', {
-	    staticStyle: {
-	      flex: "1"
-	    }
-	  })], 1)
+	  }, [_vm._t("default")], 2)
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 

@@ -3,9 +3,11 @@ package com.kunion.weex;
 import android.app.Application;
 
 import com.kunion.weex.adapter.ImageAdapter;
+import com.kunion.weex.extend.module.WXEvent;
 import com.taobao.weex.InitConfig;
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKEngine;
+import com.taobao.weex.common.WXException;
 
 
 /**
@@ -23,6 +25,12 @@ public class WeexApp extends Application {
         WXSDKEngine.initialize(this,config);
 
 //        initDebugEnvironment(true, true, DEBUG_SERVER_HOST);
+        try {
+            WXSDKEngine.registerModule("event", WXEvent.class);
+
+        } catch (WXException e) {
+            e.printStackTrace();
+        }
 
     }
 
